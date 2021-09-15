@@ -1,0 +1,217 @@
+
+
+
+Overview:
+
+  The exercises below are designed to help get you familiar with
+  fundamental graph algorithms and the code base you are using for
+  your last programming assignment.
+
+  If you are well along with the programming assignment, the exercises
+  below might be old-hat.  Read the exercises to see if this might
+  be the case.  Feel free to focus on the exercises that you think
+  will be most useful or continue working on your programming 
+  assignment.
+
+Objective: 
+
+  hands-on experience with topological-sort, bfs and dfs.
+
+
+Graph files:
+
+  you will find 5 graph files (in two groups):
+
+     ex1A, ex1B, ex1C
+     ex2A, ex2B
+
+Warmup:
+
+  Get out some paper and draw each graph by hand.
+
+  The e1X graphs have vertices a-g.  To make your drawings
+  clear, use this layout:
+
+                a
+  
+           b         c
+
+                d
+  
+           e         f
+
+                g
+
+  The e2X graphs have vertices a-h.  To make your drawings
+  clear, use this layout:
+
+
+         b                    f
+
+    a          d        e            h
+
+         c                    g
+
+
+------------------------------------------------------------
+
+Compiling the source code:
+
+  There are three programs:  topo, dfs, dfs all of which use 
+  Graph.h
+
+  To compile, simply type:
+
+        make 
+
+EXERCISES:
+
+BFS and DFS
+
+The Breadth-First Search and Depth-First Search programs 
+"explore" a given graph from a user-specified source vertex.
+
+The dfs and bfs programs produce a "report".  This report 
+displays information associated with each vertex in the graph;
+for each vertex u, you will see this info:
+
+  dist:  the number of "hops" from the source vertex before the
+         vertex u was discovered.
+
+  pred:  the 'predecessor' vertex of u -- i.e., the vertex from which
+         u was discovered.
+
+  state:  a one-character code from Graph.h
+
+              #define UNDISCOVERED 'u'
+              #define DISCOVERED   'd'
+              #define ACTIVE       'a'
+              #define FINISHED     'f'
+
+          (the interpretations of the codes are slightly different for bfs vs.
+           dfs, but for now you are most interested in whether a vertex was 
+           discovered or not).
+
+------------------------------------------------------------
+EXERCISE 1 (running bfs):
+
+  The length of a path is simply the number of hops (edges) in it.
+
+  Make sure you have a drawing of ex2A.  By hand, try to find the shortest path
+  lengths from source vertes "a" to all other reachable vertices.
+
+  Now run
+
+      ./bfs ex2A a
+
+  Try to interpret the results.
+
+  What is the "predecessor" of the source vertex itself?  Why might this
+  be used as a convention?
+
+  Can you figure out how the predecessor values "encode" paths?  Try to
+  use the predecessor values to trace (backwards) the path from "a" to 
+  "h".
+
+------------------------------------------------------------
+
+EXERCISE 2 (bfs on another graph):
+
+  Graph ex2B is the same as ex2A EXCEPT it has two additional edges.
+
+  Repeat the above exercise for this modified version.
+
+------------------------------------------------------------
+
+EXERCISE 3 (bfs from alternative source vertices):
+
+  Now repeat the previous exercises on ex2A and ex2B EXCEPT use "h" as 
+  the source vertex.
+
+     ./bfs ex2A h
+     ./bfs ex2B h
+
+  You should see some -1 values for distance.  What do you suppose that
+  indicates?
+
+-------------------------------------------
+
+  
+EXERCISES 4, 5, 6:
+
+  Repeat the exercises 1-3 (which used bfs), but now with dfs.
+
+  Use the predecessor values to trace some paths back to the source vertex.
+
+  Are they always the shortest paths possible?
+
+-------------------------------------------
+
+
+EXERCISE 7 (topological sort by hand):  
+
+   Graph ex1A is a DAG.
+
+   By hand construct a valid topological ordering of the vertices.
+
+
+------------------------------------------------------------
+
+EXERCISE 8 (running the topo sort program):
+
+  run the topological sort program on ex1A:
+
+        ./topo ex1A
+
+  The output will first show the graph itself organized as
+  an adjacency list.
+
+  Then it will produce an ordering of the vertices.
+
+  Confirm that the resulting vertex ordering is indeed a 
+  valid topological ordering.
+
+  It may or may not be the same as the one you derived by
+  hand.
+
+------------------------------------------------------------
+
+EXERCISE 9 (topo sort on another graph):
+
+  Make sure you have a drawing of ex1B.  It is identical to 
+  ex1A EXCEPT it has two additional edges.
+
+  By hand derive a valid topological ordering for ex1B.
+
+  Now run the topo program on ex1B:
+
+     ./topo ex1B
+
+  QUESTION:  how many DISTINCT valid topological orderings are
+     there for ex1B ??
+
+
+------------------------------------------------------------
+
+EXERCISE 10 (trying topo sort on yet another graph):
+
+  Now take a look at ex1C.  It is also the same as ex1A EXCEPT
+  it has two edges added (distinct from those in ex1A).
+
+  What do you think should happen when you run:
+
+      ./topo ex1C
+
+  ??
+
+  Try it!
+
+------------------------------------------------------------
+
+Still more time?
+
+  Start browsing the code in Graph.h
+
+  
+
+
